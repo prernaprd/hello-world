@@ -53,6 +53,7 @@ sss
 - `Dockerfile.test` - The Docker file containing the configuration for creating the images and running the mocha test cases when enviorment is test.
 - `init.sql` - The SQL file to be loaded to create the database table schema and loading the master data when enviornment is production. This get used in docker-compose.yml configuration steps.
 - `init-test.sql` - The SQL file to be loaded to create the database table schema and loading the master data when enviornment is test. This get used in docker-compose-test.yml configuration steps.
+- `erDiagram.png` - The entity relationship diagram of the data model created in PostgreSQL database for the application.
 - `config/` - This folder contains configuration for PostgreSQL database and application to be used in the application based on the configuration/environment variables.
 - `routes/` - This folder contains the route definitions for the API along with the API documentation in their respective YAML files and the schema to be used by express-validator module.
 - `utils/` - This folder contains the utility to connect to PostgreSQL database and perform query execution. Also contains the list of all the error messages sent from the application to the client.
