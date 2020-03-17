@@ -141,11 +141,11 @@ class Node {
         let traverse = [];
         traverse.push(this.data);
         if(this.left != null) {
-            traverse = traverse.concat(this.left.inOrderTraverse());
+            traverse = traverse.concat(this.left.preOrderTraverse());
         }
         
         if(this.right != null) {
-            traverse = traverse.concat(this.right.inOrderTraverse());
+            traverse = traverse.concat(this.right.preOrderTraverse());
         }
         return traverse;
     }
@@ -154,11 +154,11 @@ class Node {
         let traverse = [];
         
         if(this.left != null) {
-            traverse = traverse.concat(this.left.inOrderTraverse());
+            traverse = traverse.concat(this.left.postOrderTraverse());
         }
         
         if(this.right != null) {
-            traverse = traverse.concat(this.right.inOrderTraverse());
+            traverse = traverse.concat(this.right.postOrderTraverse());
         }
         traverse.push(this.data);
         return traverse;

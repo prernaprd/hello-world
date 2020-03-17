@@ -4,9 +4,7 @@ class QuickSort {
         if(l < h) {
             let partitionIndex = this.partitionFirstElementAsPivot(array, l, h);
             this.sort(array, l, partitionIndex-1);
-            console.log(array.slice(l,partitionIndex-1));
             this.sort(array, partitionIndex+1, h);
-            console.log(array.slice(partitionIndex+1,h));
         }
     }
 

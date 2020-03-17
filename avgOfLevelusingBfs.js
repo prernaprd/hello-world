@@ -97,3 +97,27 @@ for(let k = 0; k < bfsInfo.size; k++) {
     }
     console.log('Level ' , k+1 , ' Avg ' , sum/noOfElements);
 }
+
+let vertices1 = ['A','B','C','D','E','F'];
+for(let i = 0 ; i < vertices1.length; i++) {
+    graph.addVertex(vertices1[i]);
+}
+
+graph.addEdge('A', 'B'); 
+graph.addEdge('A', 'D'); 
+graph.addEdge('A', 'E'); 
+graph.addEdge('B', 'C'); 
+graph.addEdge('D', 'E'); 
+graph.addEdge('E', 'F'); 
+graph.addEdge('E', 'C'); 
+graph.addEdge('C', 'F'); 
+
+var bfsInfo = graph.bfs('A');
+for(let k = 0; k < bfsInfo.size; k++) {
+    let elements = bfsInfo.get(k);
+    let path = [];
+    for(let j in elements) {
+        path.push(elements[j]);
+    }
+    console.log('Level ' , k+1 , ' Path ' , path.join(','));
+}

@@ -55,16 +55,13 @@ class SingleLinkedList {
     replaceAtIndex(data, position) {
         if(this.head != null) {
             let currentNode = this.head;
-            let previousNode = null;
             let i = 0;
             while(currentNode) {
                 if(i === position) {
-                    let node = new Node(data, currentNode.next);
-                    previousNode.next = node;
+                    currentNode.data = data;
                     return this;
                 }
                 else {
-                    previousNode = currentNode;
                     currentNode = currentNode.next;
                     i++;
                 }
@@ -207,7 +204,7 @@ singleLinkedList.prepend(1);
 singleLinkedList.toString();
 singleLinkedList.insertAtIndex(2,1);
 singleLinkedList.toString();
-singleLinkedList.insertAtIndex(5,3);
+singleLinkedList.replaceAtIndex(5,3);
 singleLinkedList.toString();
 singleLinkedList.prepend(7);
 console.log(singleLinkedList.hasCycle());

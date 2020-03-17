@@ -62,11 +62,12 @@ class Graph {
         let q = new Queue();
         visited[startingNode] = true;
         q.enqueue(startingNode);
+        let path = [];
 
         while(!q.isEmpty()) {
             let queueElement = q.items.shift();
 
-            console.log(queueElement);
+            path.push(queueElement);
             let childList = this.adjList.get(queueElement);
 
             for(let i in childList){
@@ -77,6 +78,7 @@ class Graph {
                 }
             }
         }
+        return path;
     }
 
     dfs(startingNode) {
@@ -85,20 +87,22 @@ class Graph {
             visited[i] = false;
         }
 
-        this.dfsUtil(startingNode, visited);
+        return this.dfsUtil(startingNode, visited, []);
     }
 
-    dfsUtil(vertex, visited) {
+    dfsUtil(vertex, visited, path) {
         visited[vertex] = true;
-        console.log(vertex);
+        path.push(vertex);
 
-        let neighbor = this.adjList.get(vertex);
-        for(let i in neighbor) {
-            let element = neighbor[i];
-            if(!visited[element]) {
-                this.dfsUtil(element, visited);
+        let childList = this.adjList.get(vertex);
+        for(let i in childList) {
+            let neighbor = childList[i];
+            if(!visited[neighbor]) {
+                this.dfsUtil(neighbor, visited, path);
             }
         }
+
+        return path;
     }
 
 }
@@ -120,7 +124,7 @@ graph.addEdge('C', 'F');
 
 graph.printGraph();
 console.log('BFS');
-graph.bfs('A');
+console.log(graph.bfs('A'));
 console.log('DFS');
-graph.dfs('A');
+console.log(graph.dfs('A'));
 
