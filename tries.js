@@ -235,4 +235,5 @@ console.log('2');
 console.log(JSON.stringify(trie.children));
 trie.removeChild('xc');
 console.log('1');
-console.log(JSON.stringify(trie.children));
+//console.log(JSON.stringify(trie.children));
+trie.toString();
