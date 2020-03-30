@@ -25,3 +25,8 @@ function cellComplete(states, days) {
 
 var array = [0,1,0,0]
 cellComplete(array, 2);
+
+var array = [];
+var ar = '23 45';
+array = array.concat(ar.split(' '));
+console.log(array)
