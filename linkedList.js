@@ -119,6 +119,27 @@ class SingleLinkedList {
         
     }
 
+    reverse() {
+        if(this.head != null) {
+            let currentNode = this.head;
+            let previousNode = null;
+            let nextNode = null;
+            while(currentNode) {
+                nextNode = currentNode.next;
+                currentNode.next = previousNode;
+    
+                previousNode = currentNode;
+                currentNode = nextNode;
+            }
+            this.tail = this.head;
+            this.head = previousNode;
+            return this;
+        }
+        else {
+            console.log('List is empty');
+        }
+    }
+
     toString() {
         if(this.head != null) {
             let currentNode = this.head;
@@ -213,4 +234,6 @@ singleLinkedList.toString();
 console.log(singleLinkedList.deleteTail());
 singleLinkedList.toString();
 console.log(singleLinkedList.delete(2));
+singleLinkedList.toString();
+singleLinkedList.reverse();
 singleLinkedList.toString();
