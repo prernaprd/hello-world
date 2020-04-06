@@ -1,17 +1,40 @@
-'use strict'
+
 function minimumBribes(q) {
     let minBribe = 0;
-    let swapMap = {};
-    for(let index = 1; index <= q.length; index++) {
-        if(index < q[index-1]) {
-            let numOfSwap = q[index-1] - index;
-            if(numOfSwap > 2) {
-                console.log('Too chaotic'); 
+    let midOfThree = Number.MAX_VALUE;
+    let minOfThree = Number.MAX_VALUE;
+    let maxOfThree = Number.MAX_VALUE;
+
+    for(let index = q.length-1 ; index >= 0; --index) {
+        if(q[index] - index > 3) {
+            console.log('Too chaotic');
+            return;
+        }
+        else {
+            if(q[index] > maxOfThree) {
+                console.log('Too chaotic');
                 return;
             }
-            else {
-                minBribe = minBribe + numOfSwap;
+            else if(q[index] > midOfThree) {
+                minBribe = minBribe + 2;
             }
+            else if(q[index] > minOfThree){
+                minBribe = minBribe + 1;
+            }
+
+            if(q[index] < minOfThree) {
+                maxOfThree = midOfThree;
+                midOfThree = minOfThree;
+                minOfThree = q[index];
+            }
+            else if(q[index] < midOfThree){
+                maxOfThree = midOfThree;
+                midOfThree = q[index];
+            }
+            else if(q[index] < maxOfThree){
+                maxOfThree = q[index];
+            }
+            
         }
     }
     console.log(minBribe);
