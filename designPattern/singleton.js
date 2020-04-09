@@ -1,14 +1,21 @@
-'use strict'
-class Singleton{
-    getObject(){
-        if(!Singleton.instance) {
-            instance = new Singleton();
-        }
-        else {
-            return Singleton.instance;
-        }
+const S = (() => {
+    let instance;
+    createObject = () => {
+        let obj = new Object('New object');
+        return obj;
     }
-}
 
-const singleton = new Singleton();
-const s1 = singleton.getObject();
+    return {
+        getInstance: () => {
+            if(!instance) {
+                instance = createObject();
+            }
+            return instance;
+        }
+    };
+})();
+
+const ref1 = S.getInstance();
+const ref2 = S.getInstance();
+
+console.log(ref1 === ref2);

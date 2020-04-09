@@ -189,6 +189,22 @@ class Node {
         }
 
     }
+
+    lca(a, b) {
+        if(this.data != null) {
+            return this;
+        }
+        
+        if(this.data < a && this.data < b) {
+            return this.lca(this.right, a, b);
+        }
+
+        if(this.data > a && this.data > b) {
+            return this.lca(this.left, a, b);
+        }
+
+        return this.data;
+    }
 }
 
 const tree = new Node(7);
@@ -208,3 +224,4 @@ console.log(tree.postOrderTraverse());
 console.log(tree.contains(4));
 console.log(tree.find(6));
 console.log(tree.height() === -1 ? 0 : tree.height()+1);
+console.log(tree.lca(30,32));

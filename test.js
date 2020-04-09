@@ -1,17 +1,19 @@
-function maximumToys(prices, k) {
-    let sortedPriceList = prices.sort(function(a,b){ return a-b});
-    let p, toyAmt = 0;
-    for(p = 0; p < sortedPriceList.length; ++p) {
-        if(sortedPriceList[p] < k && toyAmt < k) {
-            toyAmt = toyAmt + sortedPriceList[p];
+function sherlockAndAnagrams(s) { 
+    let anagrams = 0;
+    for (let x = 1; x < s.length + 1; x++) {
+        const stringMap = {};
+
+        for (let y = 0; y < s.length - x + 1; y++) {
+            const string = s.substring(y, y + x).split('').sort().join('');
+            console.log(string);
+            stringMap[string] = (stringMap[string] || 0) + 1;
+            console.log(stringMap);
         }
-        else {
-            break;
-        }
+
+        Object.values(stringMap).forEach((value) => {
+            anagrams += value * (value - 1)/2;
+        });
     }
-
-    return toyAmt > k ? p-1: p;
-
 }
 
-console.log(maximumToys([1,12,5,111,200,1000,10], 50));
+sherlockAndAnagrams('mom');

@@ -1,10 +1,10 @@
 'use strict'
 class BubbleSort {
     sort(array) {
-        let i, j, stop;
+        let i, j;
 
         for(i=0; i < array.length; i++) {
-            for(j=0, stop = array.length - i; j < stop; j++) {
+            for(j=0; j < array.length - i; j++) {
                 if(array[j] > array[j+1]) {
                     this.swap(array, j, j+1);
                 }

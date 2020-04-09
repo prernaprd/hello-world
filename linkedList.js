@@ -216,24 +216,55 @@ class SingleLinkedList {
         }
         
     }
+
+    deleteAt(n) {
+        if(this.head === null)
+            return null;
+ 
+        let fast = this.head;
+        let slow = this.head;
+ 
+        for(let i= 0; i < n; i++){
+            fast = fast.next;
+        }
+ 
+        //if remove the first node
+        if(fast === null){
+            this.head = this.head.next;
+            return this.head;
+        }
+ 
+        while(fast.next !== null){
+            fast = fast.next;
+            slow = slow.next;
+        }
+ 
+        slow.next = slow.next.next;
+    
+        return this.head;
+    }
+
 }
 
 const singleLinkedList = new SingleLinkedList();
+singleLinkedList.append(1);
+singleLinkedList.append(2);
+singleLinkedList.append(3);
 singleLinkedList.append(4);
-singleLinkedList.prepend(3);
-singleLinkedList.prepend(1);
+//singleLinkedList.toString();
+// singleLinkedList.insertAtIndex(2,1);
+// singleLinkedList.toString();
+// singleLinkedList.replaceAtIndex(5,3);
+// singleLinkedList.toString();
+// singleLinkedList.prepend(7);
+// console.log(singleLinkedList.hasCycle());
+// console.log(singleLinkedList.deleteAtHead());
+// singleLinkedList.toString();
+// console.log(singleLinkedList.deleteTail());
+// singleLinkedList.toString();
+// console.log(singleLinkedList.delete(2));
+// singleLinkedList.toString();
+// singleLinkedList.reverse();
 singleLinkedList.toString();
-singleLinkedList.insertAtIndex(2,1);
-singleLinkedList.toString();
-singleLinkedList.replaceAtIndex(5,3);
-singleLinkedList.toString();
-singleLinkedList.prepend(7);
-console.log(singleLinkedList.hasCycle());
-console.log(singleLinkedList.deleteAtHead());
-singleLinkedList.toString();
-console.log(singleLinkedList.deleteTail());
-singleLinkedList.toString();
-console.log(singleLinkedList.delete(2));
-singleLinkedList.toString();
-singleLinkedList.reverse();
+singleLinkedList.deleteAt(3)
 singleLinkedList.toString();
